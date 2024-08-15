@@ -73,6 +73,11 @@ const cv::Mat RosDataProviderInterface::readRosImage(
     VLOG_EVERY_N(1, 10) << "Converting image...";
     cv::cvtColor(img_const, converted_img, cv::COLOR_RGB2GRAY);
     return converted_img;
+  } else if (img_msg->encoding == sensor_msgs::image_encodings::RGBA8) {
+    VLOG_EVERY_N(1, 10) << "Converting image...";
+    cv::cvtColor(img_const, converted_img, cv::COLOR_RGBA2GRAY);
+    cv::imwrite("/home/ubuntu/debug.png", converted_img);
+    return converted_img;
   } else if (img_msg->encoding == sensor_msgs::image_encodings::BGRA8) {
     VLOG_EVERY_N(1, 10) << "Converting image...";
     cv::cvtColor(img_const, converted_img, cv::COLOR_BGRA2GRAY);
