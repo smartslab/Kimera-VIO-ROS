@@ -1,14 +1,14 @@
 <launch>
-  <arg name="dataset_name" value="KinectAzure"/>
+  <arg name="dataset_name" value="oakd"/>
 
   <arg name="online" default="true" />
   <arg name="log_output" default="true"/>
-  <arg name="verbosity" default="0"/>
+  <arg name="verbosity" default="1"/>
   <arg name="debug" default="false"/>
-  <arg name="should_use_sim_time" default="true"/>
+  <arg name="should_use_sim_time" default="false"/>
 
-  <arg name="camera_ns" default="/azure"/>
-  <arg name="use_lcd" default="true"/>
+  <arg name="camera_ns" default="/stereo_inertial_publisher"/>
+  <arg name="use_lcd" default="false"/>
 
   <arg name="log_path" value="$(find kimera_vio_ros)/output_logs/$(arg dataset_name)"/>
 
@@ -21,14 +21,16 @@
       <arg name="log_gt_data" value="false"/>
       <arg if="$(arg log_output)" name="log_output_path" value="$(arg log_path)"/>
       <!-- Subscribed Topics -->
-      <arg name="left_cam_topic" value="$(arg camera_ns)/rgb/image_raw"/>
-      <arg name="depth_cam_topic" value="$(arg camera_ns)/depth_to_rgb/image_raw"/>
+      <arg name="left_cam_topic" value="$(arg camera_ns)/left/image_rect"/>
+      <arg name="depth_cam_topic" value="$(arg camera_ns)/stereo/depth"/>
       <arg name="imu_topic"  value="$(arg camera_ns)/imu"/>
       <!-- Only used when parsing a rosbag -->
       <arg name="odom_frame_id"     value="world"/>
-      <arg name="base_link_frame_id" value="base_link"/>
+      <arg name="base_link_frame_id" value="oak-d_frame"/>
       <arg name="map_frame_id"       value="map"/>
-      <arg name="left_cam_frame_id"  value="left_cam"/>
-      <arg name="right_cam_frame_id" value="right_cam"/>
+      <arg name="left_cam_frame_id"  value="oak_left_camera_frame"/>
+      <arg name="right_cam_frame_id" value="oak_right_camera_frame"/>
   </include>
+  
+  <node type="rviz" name="rviz" pkg="rviz" args="-d $(find kimera_vio_ros)/rviz/kimera_vio_oakd.rviz" />
 </launch>

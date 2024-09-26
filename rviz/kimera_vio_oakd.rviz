@@ -1,12 +1,16 @@
 Panels:
   - Class: rviz/Displays
-    Help Height: 75
+    Help Height: 0
     Name: Displays
     Property Tree Widget:
       Expanded:
         - /Global Options1
+        - /TF1/Frames1
+        - /Left Img1
+        - /PoseArray1
+        - /Grid1
       Splitter Ratio: 0.5
-    Tree Height: 164
+    Tree Height: 239
   - Class: rviz/Selection
     Name: Selection
   - Class: rviz/Tool Properties
@@ -24,7 +28,7 @@ Panels:
   - Class: rviz/Time
     Name: Time
     SyncMode: 0
-    SyncSource: ""
+    SyncSource: Left Img
 Preferences:
   PromptSaveOnExit: true
 Toolbars:
@@ -39,6 +43,28 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: false
+        oak-d-base-frame:
+          Value: false
+        oak-d_frame:
+          Value: true
+        oak_imu_frame:
+          Value: true
+        oak_left_camera_frame:
+          Value: false
+        oak_left_camera_optical_frame:
+          Value: false
+        oak_model_origin:
+          Value: false
+        oak_rgb_camera_frame:
+          Value: false
+        oak_rgb_camera_optical_frame:
+          Value: false
+        oak_right_camera_frame:
+          Value: false
+        oak_right_camera_optical_frame:
+          Value: false
+        world:
+          Value: true
       Marker Alpha: 1
       Marker Scale: 1
       Name: TF
@@ -46,7 +72,23 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        {}
+        oak-d-base-frame:
+          {}
+        world:
+          oak-d_frame:
+            oak_imu_frame:
+              {}
+            oak_left_camera_frame:
+              oak_left_camera_optical_frame:
+                {}
+            oak_model_origin:
+              {}
+            oak_rgb_camera_frame:
+              oak_rgb_camera_optical_frame:
+                {}
+            oak_right_camera_frame:
+              oak_right_camera_optical_frame:
+                {}
       Update Interval: 0
       Value: true
     - Alpha: 1
@@ -79,7 +121,7 @@ Visualization Manager:
       Value: true
     - Class: rviz/Image
       Enabled: true
-      Image Topic: /cam0/image_raw
+      Image Topic: /stereo_inertial_publisher/left/image_rect
       Max Value: 1
       Median window: 5
       Min Value: 0
@@ -211,9 +253,44 @@ Visualization Manager:
           Value: false
       Enabled: true
       Name: PoseGraph
+    - Alpha: 1
+      Arrow Length: 0.30000001192092896
+      Axes Length: 0.30000001192092896
+      Axes Radius: 0.009999999776482582
+      Class: rviz/PoseArray
+      Color: 255; 25; 0
+      Enabled: true
+      Head Length: 0.07000000029802322
+      Head Radius: 0.029999999329447746
+      Name: PoseArray
+      Queue Size: 10
+      Shaft Length: 0.23000000417232513
+      Shaft Radius: 0.009999999776482582
+      Shape: Arrow (Flat)
+      Topic: /lefty/vis_new_tasks
+      Unreliable: false
+      Value: true
+    - Alpha: 0.5
+      Cell Size: 1
+      Class: rviz/Grid
+      Color: 0; 0; 0
+      Enabled: true
+      Line Style:
+        Line Width: 0.029999999329447746
+        Value: Lines
+      Name: Grid
+      Normal Cell Count: 0
+      Offset:
+        X: 0
+        Y: 0
+        Z: 0
+      Plane: XY
+      Plane Cell Count: 10
+      Reference Frame: <Fixed Frame>
+      Value: true
   Enabled: true
   Global Options:
-    Background Color: 255; 255; 255
+    Background Color: 114; 159; 207
     Default Light: true
     Fixed Frame: world
     Frame Rate: 30
@@ -239,7 +316,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/ThirdPersonFollower
-      Distance: 17.964311599731445
+      Distance: 5.956047534942627
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -247,17 +324,17 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: 0.21715283393859863
-        Y: 0.6974797248840332
-        Z: 4.143006208323641e-06
+        X: 0.29308462142944336
+        Y: -0.1271674633026123
+        Z: 2.7124947337142657e-06
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.5247974395751953
+      Pitch: -0.06479769945144653
       Target Frame: base_link
-      Yaw: 2.698676109313965
+      Yaw: 3.13863468170166
     Saved:
       - Class: rviz/ThirdPersonFollower
         Distance: 6.814720153808594

@@ -129,6 +129,7 @@ bool KimeraVioRos::runKimeraVio() {
   vio_pipeline_ = nullptr;
   switch (vio_params_->frontend_type_) {
     case VIO::FrontendType::kMonoImu: {
+      std::cout << "Frontend MonoImu\n";
       vio_pipeline_ =
           std::make_unique<MonoImuPipeline>(*vio_params_,
                                             std::move(ros_visualizer_),
@@ -136,6 +137,7 @@ bool KimeraVioRos::runKimeraVio() {
                                             std::move(preloaded_vocab));
     } break;
     case VIO::FrontendType::kStereoImu: {
+      std::cout << "Frontend StereoImu\n";
       vio_pipeline_ =
           std::make_unique<StereoImuPipeline>(*vio_params_,
                                               std::move(ros_visualizer_),
@@ -143,6 +145,7 @@ bool KimeraVioRos::runKimeraVio() {
                                               std::move(preloaded_vocab));
     } break;
     case VIO::FrontendType::kRgbdImu: {
+      std::cout << "Frontend RGBDImu\n";
       vio_pipeline_ =
           std::make_unique<RgbdImuPipeline>(*vio_params_,
                                             std::move(ros_visualizer_),
