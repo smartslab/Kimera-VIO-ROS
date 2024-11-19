@@ -1,6 +1,6 @@
 <launch>
   <arg name="dataset_name" default="oakd"/>
-  <arg name="verbosity"    default="1" />
+  <arg name="verbosity"    default="0" />
   <arg name="do_coarse_temporal_sync" default="false"/>
   <arg name="do_fine_temporal_sync" default="false"/>
 
@@ -30,13 +30,13 @@
   <arg name="base_link_frame_id" value="oak-d_frame"/>
   <arg name="left_cam_frame_id"  value="oak_left_camera_frame"/>
   <arg name="right_cam_frame_id" value="oak_right_camera_frame"/>
-  <arg name="odom_frame_id"     value="world"/>
+  <arg name="odom_frame_id"     value="map"/>
   <arg name="map_frame_id"       value="map"/>
 
-  <arg name="left_cam_topic"      default="/stereo_inertial_publisher/left/image_rect"/>
-  <arg name="right_cam_topic"     default="/stereo_inertial_publisher/right/image_rect"/>
-  <arg name="imu_topic"           default="/stereo_inertial_publisher/imu"/>
-  <arg name="external_odom_topic" default=""/>
+  <arg name="left_cam_topic"      default="/lefty/stereo_inertial_publisher/left/image_rect"/>
+  <arg name="right_cam_topic"     default="/lefty/stereo_inertial_publisher/right/image_rect"/>
+  <arg name="imu_topic"           default="/lefty/stereo_inertial_publisher/imu"/>
+  <arg name="external_odom_topic" default="/lefty/dvl/dvl_odom"/>
 
   <!-- Perform stereo dense reconstruction? -->
   <arg name="run_stereo_dense"     default="false"/>

@@ -64,7 +64,7 @@ file and include this one to launch KimeraVIO on the dataset of your choice -->
   <!-- diable stereo depth checks for LCD feature matching -->
   <arg name="lcd_disable_stereo_match_depth_check" default="false"/>
 
-  <!-- diable backend using incremental pose -->
+  <!-- disable backend using incremental pose -->
   <arg name="no_incremental_pose" default="false"/>
 
   <!-- Specify the absolute path to the vocabulary file. -->
@@ -234,11 +234,11 @@ file and include this one to launch KimeraVIO on the dataset of your choice -->
     <!-- <rosparam command="load" file="$(arg params_folder)/calibration.yaml"/> -->
   </node>
 
-  <!-- Launch visualizer -->
+  <!-- Launch visualizer 
   <include unless="$(arg multirobot)" file="$(find pose_graph_tools_ros)/launch/posegraph_view.launch" >
     <arg name="frame_id"      value="$(arg map_frame_id)" />
     <arg name="graph_topic"   value="pose_graph" />
     <arg name="ns"            value="kimera_vio_ros"/>
-  </include>
+  </include>-->
 
 </launch>

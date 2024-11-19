@@ -170,6 +170,7 @@ void RosLoopClosureVisualizer::publishOptimizedTrajectory(
 
   // Publish message
   odometry_pub_.publish(odometry_msg);
+  
 }
 
 // Function used ultimately to visualize loop closure
@@ -340,6 +341,19 @@ void RosLoopClosureVisualizer::publishPoseGraph(
         pose_graph_nodes_.at(pose_graph_nodes_.size() - 2));
     incremental_graph.nodes.push_back(
         pose_graph_nodes_.at(pose_graph_nodes_.size() - 1));
+        
+    // Publish transform
+    geometry_msgs::TransformStamped odom_tf;
+    odom_tf.header.stamp.fromNSec(ts);
+    odom_tf.header.frame_id = map_frame_id_;
+    odom_tf.child_frame_id = base_link_frame_id_;
+    odom_tf.transform.translation.x=incremental_graph.nodes[1].pose.position.x;
+    odom_tf.transform.translation.y=incremental_graph.nodes[1].pose.position.y;
+    odom_tf.transform.translation.z=incremental_graph.nodes[1].pose.position.z;
+    odom_tf.transform.rotation.x=incremental_graph.nodes[1].pose.orientation.x;
+    odom_tf.transform.rotation.y=incremental_graph.nodes[1].pose.orientation.y;
+    odom_tf.transform.rotation.z=incremental_graph.nodes[1].pose.orientation.z;
+    odom_tf.transform.rotation.w=incremental_graph.nodes[1].pose.orientation.w;
     if (lcd_output->is_loop_closure_) {
       // Not directly taking the last lc_edge to bypass kimera-rpgo
       gtsam::Pose3 lc_transform = lcd_output->relative_pose_;
@@ -368,6 +382,11 @@ void RosLoopClosureVisualizer::publishPoseGraph(
     incremental_graph.header.stamp.fromNSec(ts);
     incremental_graph.header.frame_id = map_frame_id_;
     posegraph_incremental_pub_.publish(incremental_graph);
+    tf_broadcaster_.sendTransform(odom_tf);
+    
+    
+  
+    
   }
 }
 

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<launch>
+    
+    <group ns="lefty">
+    
+          <include file="$(find opal-bluerov-mavros)/launch/stereo_inertial_node.launch"/>
+          <include file="$(find kimera_vio_ros)/launch/kimera_vio_ros_oakd.launch"/>
+          
+    </group>
+    
+    
+</launch>

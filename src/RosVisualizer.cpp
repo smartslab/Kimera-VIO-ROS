@@ -23,6 +23,7 @@
 #include <pcl_msgs/PolygonMesh.h>
 #include <pcl_ros/point_cloud.h>
 #include <ros/ros.h>
+#include <pcl/point_types.h>
 #include <std_msgs/Float64MultiArray.h>
 #include <tf/transform_broadcaster.h>
 #include <tf2/buffer_core.h>
@@ -32,6 +33,7 @@
 #include "kimera_vio_ros/utils/UtilsRos.h"
 
 DECLARE_int32(viz_type);
+typedef pcl::PointCloud<pcl::PointXYZ> PointCloud;
 
 namespace VIO {
 
@@ -64,6 +66,7 @@ RosVisualizer::RosVisualizer(const VioParams& vio_params)
   pointcloud_pub_ =
       nh_.advertise<PointCloudXYZRGB>("time_horizon_pointcloud", 1, true);
   mesh_3d_frame_pub_ = nh_.advertise<pcl_msgs::PolygonMesh>("mesh", 1, true);
+  //ros::Publisher landmarks_3d_pub_ = nh_.advertise<PointCloud>("keypoints_3d", 1, true);
 }
 
 VisualizerOutput::UniquePtr RosVisualizer::spinOnce(
@@ -406,6 +409,12 @@ void RosVisualizer::publishFrontendStats(
 
   // Publish Message
   frontend_stats_pub_.publish(frontend_stats_msg);
+  
+  //auto lm3d = *output.stereo_frame_lkf_.keypoints_3d_;
+  //PointCloud::Ptr msg (new PointCloud);
+  //msg->header.frame_id = "oak_left_camera_frame";
+  //msg->height = msg->width = 1;
+  //msg->points.push_back (lm3d);
 }
 
 void RosVisualizer::publishResiliency(
@@ -522,7 +531,7 @@ void RosVisualizer::publishTf(const BackendOutput::ConstPtr& output) {
   odom_tf.child_frame_id = base_link_frame_id_;
 
   utils::gtsamPoseToRosTf(pose, &odom_tf.transform);
-  tf_broadcaster_.sendTransform(odom_tf);
+  //tf_broadcaster_.sendTransform(odom_tf);
 }
 
 }  // namespace VIO

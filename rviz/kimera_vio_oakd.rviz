@@ -5,10 +5,11 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /Global Options1
+        - /Status1
         - /TF1/Frames1
         - /Left Img1
-        - /PoseArray1
-        - /Grid1
+        - /Debug Img1
+        - /3D Mesh Textured1
       Splitter Ratio: 0.5
     Tree Height: 239
   - Class: rviz/Selection
@@ -43,6 +44,10 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: false
+        dvl_link:
+          Value: true
+        map:
+          Value: true
         oak-d-base-frame:
           Value: false
         oak-d_frame:
@@ -63,8 +68,6 @@ Visualization Manager:
           Value: false
         oak_right_camera_optical_frame:
           Value: false
-        world:
-          Value: true
       Marker Alpha: 1
       Marker Scale: 1
       Name: TF
@@ -72,10 +75,10 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        oak-d-base-frame:
-          {}
-        world:
+        map:
           oak-d_frame:
+            dvl_link:
+              {}
             oak_imu_frame:
               {}
             oak_left_camera_frame:
@@ -89,6 +92,8 @@ Visualization Manager:
             oak_right_camera_frame:
               oak_right_camera_optical_frame:
                 {}
+        oak-d-base-frame:
+          {}
       Update Interval: 0
       Value: true
     - Alpha: 1
@@ -121,7 +126,7 @@ Visualization Manager:
       Value: true
     - Class: rviz/Image
       Enabled: true
-      Image Topic: /stereo_inertial_publisher/left/image_rect
+      Image Topic: /lefty/stereo_inertial_publisher/left/image_rect
       Max Value: 1
       Median window: 5
       Min Value: 0
@@ -133,7 +138,7 @@ Visualization Manager:
       Value: true
     - Class: rviz/Image
       Enabled: true
-      Image Topic: /kimera_vio_ros/kimera_vio_ros_node/feature_tracks
+      Image Topic: /lefty/kimera_vio_ros/kimera_vio_ros_node/feature_tracks
       Max Value: 1
       Median window: 5
       Min Value: 0
@@ -150,7 +155,7 @@ Visualization Manager:
       Phong Shading: true
       Point Size: 1
       Polygon Mode: SOLID
-      PolygonMesh Topic: /kimera_vio_ros/mesh
+      PolygonMesh Topic: /lefty/kimera_vio_ros/mesh
       Queue Size: 25
       Scene Color Scale: 1
       Shader Program: TEXTURE
@@ -288,11 +293,28 @@ Visualization Manager:
       Plane Cell Count: 10
       Reference Frame: <Fixed Frame>
       Value: true
+    - Alpha: 1
+      Arrow Length: 0.30000001192092896
+      Axes Length: 0.30000001192092896
+      Axes Radius: 0.009999999776482582
+      Class: rviz/PoseArray
+      Color: 0; 255; 0
+      Enabled: true
+      Head Length: 0.07000000029802322
+      Head Radius: 0.029999999329447746
+      Name: PoseArray
+      Queue Size: 10
+      Shaft Length: 0.23000000417232513
+      Shaft Radius: 0.009999999776482582
+      Shape: Arrow (Flat)
+      Topic: /lefty/vis_all_tasks
+      Unreliable: false
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 114; 159; 207
     Default Light: true
-    Fixed Frame: world
+    Fixed Frame: map
     Frame Rate: 30
   Name: root
   Tools:
@@ -316,7 +338,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/ThirdPersonFollower
-      Distance: 5.956047534942627
+      Distance: 3.313786506652832
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -332,9 +354,9 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: -0.06479769945144653
+      Pitch: -0.15479759871959686
       Target Frame: base_link
-      Yaw: 3.13863468170166
+      Yaw: 2.883636474609375
     Saved:
       - Class: rviz/ThirdPersonFollower
         Distance: 6.814720153808594
@@ -376,5 +398,5 @@ Window Geometry:
   Views:
     collapsed: true
   Width: 1166
-  X: 0
-  Y: 27
+  X: 67
+  Y: 0

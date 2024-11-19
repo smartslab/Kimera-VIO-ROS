@@ -72,7 +72,7 @@ class RosVisualizer : public Visualizer3D {
 
   void publishPerFrameMesh3D(const MesherOutput::ConstPtr& output) const;
 
-  // void publishTimeHorizonMesh3D(const MesherOutput::ConstPtr& output) const;
+  void publishTimeHorizonMesh3D(const MesherOutput::ConstPtr& output) const;
 
   void publishState(const BackendOutput::ConstPtr& output) const;
 
